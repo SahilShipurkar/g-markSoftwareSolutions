@@ -12,6 +12,19 @@ export default function CustomCursor({ isEnter }) {
     let isVisible = false;
     let animationFrameId;
 
+    function updateCursorColor(x, y) {
+      if (!cursorRef.current) return;
+      const el = document.elementFromPoint(x, y);
+      if (el) {
+        const isDarkSection = el.closest('.experience') || el.closest('.shade');
+        if (!isDarkSection) {
+          cursorRef.current.classList.add('is-dark-cursor');
+        } else {
+          cursorRef.current.classList.remove('is-dark-cursor');
+        }
+      }
+    }
+
     function onPointerMove(e) {
       pointerX = e.clientX;
       pointerY = e.clientY;
@@ -19,6 +32,11 @@ export default function CustomCursor({ isEnter }) {
         isVisible = true;
         cursorRef.current.classList.add('is-visible');
       }
+      updateCursorColor(pointerX, pointerY);
+    }
+
+    function onScroll() {
+      updateCursorColor(pointerX, pointerY);
     }
 
     function onMouseLeave() {
@@ -28,7 +46,8 @@ export default function CustomCursor({ isEnter }) {
       }
     }
 
-    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('mouseleave', onMouseLeave);
 
     function loop() {
@@ -52,6 +71,7 @@ export default function CustomCursor({ isEnter }) {
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('scroll', onScroll);
       document.removeEventListener('mouseleave', onMouseLeave);
     };
   }, [isEnter]);

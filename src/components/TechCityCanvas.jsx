@@ -53,16 +53,16 @@ export default function TechCityCanvas({ isPreloading }) {
 
     // High Speed Data Highways & Particles
     const dataStreams = [];
-    const numStreams = 120;
+    const numStreams = 110;
     for (let i = 0; i < numStreams; i++) {
       dataStreams.push({
         x: (Math.random() - 0.5) * 1800,
         y: Math.random() * 550 - 50,
         z: Math.random() * 2600,
-        speed: Math.random() * 24 + 14,
-        length: Math.random() * 60 + 30,
+        speed: Math.random() * 8 + 6,
+        length: Math.random() * 50 + 25,
         color: Math.random() > 0.25 ? '#00f0ff' : '#ff5a5f',
-        size: Math.random() * 2.5 + 1.2
+        size: Math.random() * 2.2 + 1.2
       });
     }
 
@@ -72,11 +72,11 @@ export default function TechCityCanvas({ isPreloading }) {
       ctx.clearRect(0, 0, width, height);
 
       // Lerp mouse
-      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.06;
-      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.06;
+      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.05;
+      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.05;
 
       const fov = 500;
-      const flySpeed = 28;
+      const flySpeed = 12;
       zOffset += flySpeed;
 
       const cx = width / 2 + mouseRef.current.x;
@@ -169,7 +169,7 @@ export default function TechCityCanvas({ isPreloading }) {
 
       // Render High Speed Data Highway Streams
       dataStreams.forEach((p) => {
-        p.z -= p.speed * 2.2;
+        p.z -= p.speed * 1.1;
         if (p.z < 20) {
           p.z = 2600;
           p.x = (Math.random() - 0.5) * 1800;

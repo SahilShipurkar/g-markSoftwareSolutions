@@ -1,13 +1,8 @@
 import React from 'react';
 
-export default function HeroContent() {
+export default function HeroContent({ onNavigate }) {
   return (
     <section className="hero-content chrome" aria-live="polite">
-      <div className="hero-badge">
-        <span className="badge-dot" />
-        <span>G-MARK SOLUTIONS</span>
-      </div>
-      
       <h1 className="hero-title">
         The New Standard<br />
         of Digital<br />
@@ -20,7 +15,11 @@ export default function HeroContent() {
       </p>
 
       <div className="hero-actions">
-        <button type="button" className="btn-learn-more">
+        <button
+          type="button"
+          className="btn-learn-more"
+          onClick={() => onNavigate?.('about')}
+        >
           Learn More
         </button>
       </div>

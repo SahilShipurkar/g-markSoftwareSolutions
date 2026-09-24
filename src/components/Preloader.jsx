@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import gMarkLogo from '../assets/G Mark.png';
 
-export default function Preloader({ onComplete }) {
-  const [progress, setProgress] = useState(0);
-  const [isLeaving, setIsLeaving] = useState(false);
-  const [isDocked, setIsDocked] = useState(false);
-  const [isSettled, setIsSettled] = useState(false);
-  const [isBackground, setIsBackground] = useState(false);
-  const [hideCount, setHideCount] = useState(false);
+let globalHasPreloaded = false;
+
+export default function Preloader({ onComplete, skipAnimation = false }) {
+  const shouldSkip = skipAnimation || globalHasPreloaded;
+  const [progress, setProgress] = useState(shouldSkip ? 100 : 0);
+  const [isLeaving, setIsLeaving] = useState(shouldSkip);
+  const [isDocked, setIsDocked] = useState(shouldSkip);
+  const [isSettled, setIsSettled] = useState(shouldSkip);
+  const [isBackground, setIsBackground] = useState(shouldSkip);
+  const [hideCount, setHideCount] = useState(shouldSkip);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (shouldSkip) {
+      document.body.classList.add('intro-ready', 'preload-complete');
+      onComplete?.();
+      return;
+    }
+
     let animId;
     let isCancelled = false;
     const duration = 1400; // Snappy 1.4s countdown sequence
@@ -17,13 +36,14 @@ export default function Preloader({ onComplete }) {
 
     function finish() {
       if (isCancelled) return;
+      globalHasPreloaded = true;
       setProgress(100);
       setIsLeaving(true);
       setIsDocked(true);
       setIsBackground(true);
-      document.body.classList.add('preload-complete');
+      document.body.classList.add('intro-ready', 'preload-complete');
 
-      onComplete();
+      onComplete?.();
 
       setTimeout(() => {
         if (!isCancelled) setHideCount(true);
@@ -67,12 +87,16 @@ export default function Preloader({ onComplete }) {
         <div className="preloader-shade" />
       </div>
 
-      <img
-        className={`floating-logo ${isDocked ? 'is-docked' : ''} ${isSettled ? 'is-settled' : ''}`}
+      <div
+        className={`floating-logo-card ${isDocked ? 'is-docked' : ''} ${isSettled ? 'is-settled' : ''} ${isScrolled ? 'is-scrolled' : ''}`}
         id="floating-logo"
-        src={gMarkLogo}
-        alt="G-Mark Software Solutions"
-      />
+      >
+        <img
+          className="floating-logo-img"
+          src={gMarkLogo}
+          alt="G-Mark Software Solutions"
+        />
+      </div>
 
       {!hideCount && (
         <div
