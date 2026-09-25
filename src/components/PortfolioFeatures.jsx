@@ -76,28 +76,29 @@ const agriRow2 = [
 
 export default function PortfolioFeatures({ onNavigate }) {
   return (
-    <section id="industrial-solutions" className="relative w-full min-h-screen lg:h-screen bg-white text-neutral-900 font-['Inter',sans-serif] antialiased px-4 sm:px-6 md:px-10 lg:px-14 py-6 sm:py-8 md:py-10 flex flex-col justify-between overflow-hidden z-20 border-t border-neutral-200 shadow-sm">
+    <section id="industrial-solutions" className="relative w-full min-h-screen lg:h-screen bg-white text-neutral-900 font-['Inter',sans-serif] antialiased px-3.5 sm:px-6 md:px-10 lg:px-14 py-8 sm:py-10 lg:py-10 flex flex-col justify-between overflow-visible lg:overflow-hidden z-20 border-t border-neutral-200 shadow-sm">
       {/* Top Header Row (Clean White Background Theme) */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-4 sm:pb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-6">
         <div className="max-w-3xl space-y-2">
-          <h2 className="text-[28px] sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.15] font-bold tracking-tight text-neutral-950">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.15] font-bold tracking-tight text-neutral-950">
             G-Mark <span className="text-[#FF5A5F]">Industrial Solutions</span>
           </h2>
-          <p className="text-sm md:text-[15px] leading-[1.6] text-neutral-600 max-w-3xl font-normal">
+          <p className="text-xs sm:text-sm md:text-[15px] leading-[1.6] text-neutral-600 max-w-3xl font-normal">
             Precision intelligence platforms engineered for Smart Agriculture, Industrial IoT telemetry networks, and 4M intelligent enterprise maintenance.
           </p>
         </div>
 
         <button
           type="button"
-          className="bg-neutral-950 text-white hover:bg-neutral-800 rounded-full px-6 sm:px-7 py-2.5 sm:py-3 text-sm font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 shrink-0 cursor-pointer border border-neutral-900"
+          onClick={() => onNavigate && onNavigate('contact')}
+          className="bg-neutral-950 text-white hover:bg-neutral-800 rounded-full px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 shrink-0 cursor-pointer border border-neutral-900 active:scale-95"
         >
           Request Enterprise Demo
         </button>
       </div>
 
       {/* Grid: 3 columns on lg, 2 on md, 1 on mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 flex-1 min-h-0 pt-2 pb-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-5 flex-1 min-h-0 pt-2 pb-1">
         {/* =========================================================================
             COLUMN 1: Smart Maintenance Management System (with 4M Logo)
            ========================================================================= */}
@@ -156,27 +157,22 @@ export default function PortfolioFeatures({ onNavigate }) {
         {/* =========================================================================
             COLUMN 2: Client Voice / Industry Impact & Smart Industrial IoT
            ========================================================================= */}
-        <div className="grid grid-rows-1 md:grid-rows-[auto_1fr] gap-4 md:gap-5 min-h-0">
-          {/* Top - Industry Impact card */}
-          <div className="relative rounded-2xl bg-[#283838] p-5 md:p-6 noise-overlay flex flex-col justify-between gap-4 overflow-hidden border border-neutral-300/40 shadow-xl text-white">
-            <div className="relative z-10 flex items-center justify-start gap-1.5 text-white/80 uppercase tracking-[0.22em] text-[11px] font-semibold">
+        <div className="grid grid-rows-1 md:grid-rows-[auto_1fr] gap-3 md:gap-4 min-h-0 flex-1">
+          {/* Top - Industry Impact card (Minimized & Sleek) */}
+          <div className="relative rounded-2xl bg-[#283838] p-3.5 sm:p-4 noise-overlay flex flex-col justify-center gap-1.5 overflow-hidden border border-neutral-300/40 shadow-md text-white">
+            <div className="relative z-10 flex items-center justify-start gap-1.5 text-white/80 uppercase tracking-[0.2em] text-[10px] sm:text-[10.5px] font-semibold">
               <Sparkle className="h-3 w-3" strokeWidth={1.5} />
               <span>INDUSTRY IMPACT</span>
               <Sparkle className="h-3 w-3" strokeWidth={1.5} />
             </div>
 
-            <p className="relative z-10 text-[13px] sm:text-[13.5px] leading-[1.6] text-white/90 italic drop-shadow-sm">
+            <p className="relative z-10 text-xs sm:text-[12.5px] leading-relaxed text-white/90 italic drop-shadow-sm">
               "G-Mark revolutionized our enterprise infrastructure with 24/7 telemetry and proactive maintenance that reduced plant downtime by 42%."
             </p>
-
-            <div className="relative z-10 text-xs sm:text-[13px] text-white/90">
-              <strong className="font-semibold text-white">Director of Industrial Systems</strong>
-              <span className="text-white/70"> — Apex Heavy Industries</span>
-            </div>
           </div>
 
-          {/* Bottom - Smart Industrial IoT Telemetry & Networks card */}
-          <div className="relative rounded-2xl bg-black overflow-hidden flex flex-col justify-between p-5 md:p-6 min-h-[220px] border border-neutral-300/40 shadow-2xl">
+          {/* Bottom - Smart Industrial IoT Telemetry & Networks card (Expanded) */}
+          <div className="relative rounded-2xl bg-black overflow-hidden flex flex-col justify-between p-5 md:p-6 min-h-[300px] flex-1 border border-neutral-300/40 shadow-2xl group">
             {/* Photorealistic Slow-Motion Background (Bright & Clear) */}
             <CinematicSlowMotionBg
               imageSrc={smartIotBg}
@@ -191,19 +187,19 @@ export default function PortfolioFeatures({ onNavigate }) {
             </div>
 
             {/* Center Content with IoT Logo & Clean Title */}
-            <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-xs mx-auto my-auto py-1">
-              <IndustrialIoTLogo className="mb-2" />
+            <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-xs mx-auto my-auto py-2">
+              <IndustrialIoTLogo className="mb-2.5" />
 
-              <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] tracking-widest font-semibold uppercase bg-black/60 text-sky-300 border border-sky-400/40 mb-1.5 backdrop-blur-md shadow-md">
+              <span className="inline-block px-3 py-1 rounded-full text-[10px] tracking-widest font-semibold uppercase bg-black/60 text-sky-300 border border-sky-400/40 mb-2 backdrop-blur-md shadow-md">
                 EDGE PLATFORM
               </span>
 
-              <h4 className="text-base sm:text-lg font-bold tracking-tight text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              <h4 className="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 Smart Industrial IoT<br />
                 <span className="text-[#FF5A5F] drop-shadow-[0_0_10px_rgba(255,90,95,0.5)]">Telemetry & Networks</span>
               </h4>
 
-              <p className="mt-1 text-xs text-white/95 font-medium leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.95)]">
+              <p className="mt-2 text-xs sm:text-[13px] text-white/95 font-medium leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.95)]">
                 High-frequency telemetry networks connecting factory sensors, PLC nodes, and live operations dashboards.
               </p>
             </div>
@@ -213,7 +209,7 @@ export default function PortfolioFeatures({ onNavigate }) {
               <button
                 type="button"
                 onClick={() => onNavigate && onNavigate('iot')}
-                className="liquid-glass w-full rounded-full py-2.5 px-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/30 hover:border-white/60 shadow-xl bg-black/40 backdrop-blur-md"
+                className="liquid-glass w-full rounded-full py-2.5 sm:py-3 px-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-white hover:bg-white/20 transition-all duration-300 cursor-pointer border border-white/30 hover:border-white/60 shadow-xl bg-black/40 backdrop-blur-md"
               >
                 <span>Learn More</span>
                 <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.5} />

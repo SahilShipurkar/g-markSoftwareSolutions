@@ -89,11 +89,11 @@ export default function GramUnnatiPageView({ onNavigate, onBack }) {
           TOP NAVIGATION BAR (White Theme)
          ========================================================================= */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 h-16 sm:h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={handleBackAction}
-              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-700 hover:text-black transition-colors px-3 py-1.5 rounded-lg hover:bg-neutral-100 cursor-pointer"
+              className="flex items-center gap-1.5 sm:gap-2 text-xs font-bold uppercase tracking-wider text-neutral-700 hover:text-black transition-colors px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-neutral-100 cursor-pointer"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back</span>
@@ -106,16 +106,16 @@ export default function GramUnnatiPageView({ onNavigate, onBack }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full text-[11px] font-bold text-emerald-700 uppercase tracking-widest">
-              <img src={gramUnnatiLogoImg} alt="GramUnnati" className="h-4 w-auto object-contain" />
-              <span>GramUnnati Agri-Tech</span>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-emerald-50 border border-emerald-200 px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold text-emerald-700 uppercase tracking-wider sm:tracking-widest">
+              <img src={gramUnnatiLogoImg} alt="GramUnnati" className="h-3.5 sm:h-4 w-auto object-contain" />
+              <span>GramUnnati</span>
             </div>
             <button
               onClick={() => onNavigate('contact')}
-              className="px-4 py-2 bg-neutral-950 hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition-all cursor-pointer"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-neutral-950 hover:bg-neutral-800 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition-all cursor-pointer"
             >
-              Partner With Us
+              Partner
             </button>
           </div>
         </div>
@@ -124,44 +124,44 @@ export default function GramUnnatiPageView({ onNavigate, onBack }) {
       {/* =========================================================================
           HERO SECTION
          ========================================================================= */}
-      <section className="relative py-16 sm:py-24 border-b border-neutral-200 overflow-hidden bg-gradient-to-b from-emerald-50/40 via-neutral-50 to-white">
+      <section className="relative py-12 sm:py-20 lg:py-24 border-b border-neutral-200 overflow-hidden bg-gradient-to-b from-emerald-50/40 via-neutral-50 to-white">
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7 space-y-6"
+              className="lg:col-span-7 space-y-4 sm:space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700 uppercase tracking-[0.2em]">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] sm:text-xs font-bold text-emerald-700 uppercase tracking-[0.2em]">
                 <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
                 <span>Empowering Rural India. Enriching Lives.</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight leading-[1.15]">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight leading-[1.15]">
                 Smart Agricultural <span className="text-emerald-600">Management System</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-lg text-neutral-600 leading-relaxed font-normal">
                 GramUnnati combines IoT precision agriculture with seamless farmer-to-enterprise supply chains. From automated soil telemetry to fair pricing intelligence, we transform Indian agriculture into a sustainable, profitable future.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                 <button
                   onClick={() => {
                     const el = document.getElementById('gramunnati-pillars');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-7 py-3.5 bg-neutral-950 hover:bg-neutral-800 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer"
+                  className="px-6 sm:px-7 py-3 sm:py-3.5 bg-neutral-950 hover:bg-neutral-800 text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all text-center cursor-pointer"
                 >
                   Explore Vision & Mission
                 </button>
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="px-7 py-3.5 bg-white border border-neutral-300 hover:border-neutral-900 text-neutral-900 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all cursor-pointer"
+                  className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white border border-neutral-300 hover:border-neutral-900 text-neutral-900 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl shadow-sm transition-all text-center cursor-pointer"
                 >
                   Join Agri Ecosystem
                 </button>
@@ -175,18 +175,18 @@ export default function GramUnnatiPageView({ onNavigate, onBack }) {
               transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-5 relative"
             >
-              <div className="relative rounded-3xl bg-neutral-950 p-2 shadow-2xl border border-neutral-300 overflow-hidden group">
+              <div className="relative rounded-2xl sm:rounded-3xl bg-neutral-950 p-2 shadow-2xl border border-neutral-300 overflow-hidden group">
                 <img
                   src={gramUnnatiImg}
                   alt="GramUnnati Platform Showcase"
-                  className="w-full h-auto rounded-2xl object-cover"
+                  className="w-full h-auto rounded-xl sm:rounded-2xl object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 rounded-2xl pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 rounded-xl sm:rounded-2xl pointer-events-none" />
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white space-y-1">
+                  <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
                     Agricultural Telemetry Active
                   </span>
-                  <p className="text-sm font-bold">Connecting 50,000+ Smart Acres</p>
+                  <p className="text-xs sm:text-sm font-bold">Connecting 50,000+ Smart Acres</p>
                 </div>
               </div>
             </motion.div>

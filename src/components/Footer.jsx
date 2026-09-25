@@ -25,8 +25,8 @@ export default function Footer({ onSelectTab }) {
       {/* Background Micro Grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:24px_24px] opacity-45 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#c2cbda]/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-12 border-b border-[#c2cbda]/70">
           
           {/* Col 1: Brand & Contact Info */}
           <div className="md:col-span-5 space-y-5">

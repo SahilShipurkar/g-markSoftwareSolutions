@@ -5,6 +5,14 @@ export default function CustomCursor({ isEnter }) {
   const orbitRef = useRef(null);
 
   useEffect(() => {
+    // Disable on touch / coarse pointer devices
+    const isCoarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isCoarse || (hasTouch && window.innerWidth < 1024)) {
+      if (cursorRef.current) cursorRef.current.style.display = 'none';
+      return;
+    }
+
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
     let orbitX = pointerX;
@@ -26,6 +34,7 @@ export default function CustomCursor({ isEnter }) {
     }
 
     function onPointerMove(e) {
+      if (e.pointerType === 'touch') return;
       pointerX = e.clientX;
       pointerY = e.clientY;
       if (!isVisible && cursorRef.current) {

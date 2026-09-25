@@ -294,7 +294,8 @@ export default function ProjectsCaseStudies() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white text-black border-t border-neutral-200"
+      id="projects-case-studies"
+      className="relative bg-white text-black border-t border-neutral-200 overflow-hidden"
       style={{ fontFamily: "'DM Sans', sans-serif" }}
     >
       {/* Inject Keyframe Animation */}
@@ -303,7 +304,7 @@ export default function ProjectsCaseStudies() {
       `}</style>
 
       {/* TOP AREA (Header with floating squares) */}
-      <div className="relative px-6 pb-8 pt-10 sm:px-10 sm:pt-14 lg:px-16 lg:pt-16">
+      <div className="relative px-4 pb-8 pt-10 sm:px-10 sm:pt-14 lg:px-16 lg:pt-16">
         {/* Parallax floating black squares */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           {floatingSquaresData.map((sq, i) => (
@@ -324,19 +325,19 @@ export default function ProjectsCaseStudies() {
           transition={{ duration: 0.7, ease: easeCustom }}
           className="relative mx-auto max-w-4xl text-center"
         >
-          <h2 className="text-[clamp(1.8rem,3.2vw,2.8rem)] font-light leading-[1.2] tracking-tight text-black">
+          <h2 className="text-[clamp(1.7rem,3.2vw,2.8rem)] font-light leading-[1.2] tracking-tight text-black">
             Let Your Data Take Your Business to{' '}
             <span className="text-[#FF5A5F] font-normal">Higher Grounds</span>
           </h2>
-          <p className="mt-3.5 text-[14px] sm:text-[15px] leading-[1.7] text-neutral-600 max-w-3xl mx-auto font-normal">
+          <p className="mt-3 text-[13px] sm:text-[15px] leading-[1.7] text-neutral-600 max-w-3xl mx-auto font-normal">
             We aim to deliver intuitive high-tech platforms that enable industries to effortlessly shift from the physical world to the digital age. Recognizing the obstacles that come with this change, our cutting solutions are crafted to streamline the transition, boost efficiency, and promote growth.
           </p>
         </motion.div>
       </div>
 
       {/* CASE STUDY CARDS (2x2 Grid) */}
-      <div className="mx-auto max-w-7xl px-6 pb-20 sm:px-10 lg:px-16">
-        <div className="grid gap-5 md:grid-cols-2">
+      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-10 lg:px-16">
+        <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
           {caseStudies.map((study, idx) => (
             <CaseStudyCard key={study.id} study={study} index={idx} />
           ))}

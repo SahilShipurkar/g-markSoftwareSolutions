@@ -56,22 +56,22 @@ export default function StatsBanner() {
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 relative z-10">
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-6 sm:mb-8"
+          className="text-center mb-5 sm:mb-8"
         >
-          <span className="inline-block text-[11px] sm:text-xs font-bold text-neutral-900 uppercase tracking-[0.25em]">
+          <span className="inline-block text-[10px] sm:text-xs font-bold text-neutral-900 uppercase tracking-[0.25em]">
             WE TAKE PRIDE IN OUR NUMBERS
           </span>
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-0 items-center justify-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-0 items-center justify-center">
           {stats.map((stat, idx) => (
             <motion.div
               key={idx}
@@ -83,12 +83,14 @@ export default function StatsBanner() {
                 delay: idx * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`flex flex-col items-center text-center px-4 py-1 group ${
+              className={`flex flex-col items-center text-center px-2 sm:px-4 py-2 group ${
+                idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+              } ${
                 idx !== 0 ? 'lg:border-l lg:border-neutral-200' : ''
               }`}
             >
               {/* Animated Counting Value */}
-              <div className="text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight leading-none mb-1.5 group-hover:scale-105 transition-transform duration-200">
+              <div className="text-2xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight leading-none mb-1 group-hover:scale-105 transition-transform duration-200">
                 <CounterNumber
                   target={stat.target}
                   suffix={stat.suffix}
@@ -98,7 +100,7 @@ export default function StatsBanner() {
               </div>
 
               {/* Stat Label */}
-              <div className="text-[10px] sm:text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.16em] group-hover:text-neutral-900 transition-colors duration-200">
+              <div className="text-[9px] sm:text-[11px] font-semibold text-neutral-500 uppercase tracking-[0.16em] group-hover:text-neutral-900 transition-colors duration-200">
                 {stat.label}
               </div>
             </motion.div>
